@@ -1,0 +1,33 @@
+﻿@model _60321_Ganko.Models.Cart
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ваша корзина</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Марка</th>
+            <th>Модель</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Общая стоимость</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.GetItems())
+        {
+            <tr>
+                <td>@item.Car.Manufacturer</td>
+                <td>@item.Car.Model</td>
+                <td>@item.Car.Price</td>
+                <td>@item.Qauntity</td>
+                <td>@(item.Car.Price*item.Qauntity)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@TempData["returnUrl"]" class="btn btn-default">Вернуться к меню</a>

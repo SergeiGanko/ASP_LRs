@@ -1,0 +1,13 @@
+﻿@model _60321_Ganko.Models.Cart
+
+@{
+    ViewBag.Title = "CartSummary";
+}
+
+<div class="nav navbar-right">
+    <a href="@Url.Action("IndexCart", "Cart", new { returnUrl=Request.Path})">
+        @Model.GetTotal()$ (@Model.GetItems().Sum(i => i.Qauntity))
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+    </a>
+</div>
+

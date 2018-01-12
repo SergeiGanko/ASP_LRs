@@ -1,0 +1,56 @@
+﻿@model IEnumerable<_60321_Ganko.DAL.Entities.Car>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MimeType)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(@Html.DisplayFor(
+                    modelItem => item.Model).ToString(),
+                    "Edit",
+                    new {id=item.CarId})
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassType)
+        </td>
+
+        <td>
+            @Html.ActionLink("Удалить", "Delete", new { id=item.CarId })
+        </td>
+    </tr>
+}
+
+</table>

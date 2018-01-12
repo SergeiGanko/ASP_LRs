@@ -1,0 +1,14 @@
+﻿@model IEnumerable<_60321_Ganko.Models.MenuItem>
+
+<h6>Карта сайта</h6>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                @Html.ActionLink(item.Name, item.Action, item.Controller)
+            </li>
+        }
+        @*<li>@Html.ActionLink("Домой", "Index", "Home")</li>
+        <li class="active">@Html.ActionLink("Каталог", "List", "Product")</li>
+        <li>@Html.ActionLink("Администрирование", "Index", "Admin")</li>*@
+    </ul>

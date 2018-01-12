@@ -1,0 +1,35 @@
+﻿@model IEnumerable<string>
+
+<!-- получение названия текущей группы из запроса-->
+@{ 
+    var txt = Request.RequestContext.RouteData.Values["group"] ?? "Все группы";
+}
+
+<h3>Выберите группу</h3>
+<div class="dropdown btn-group">
+    <button type="button" class="btn btn-default">@txt</button>
+    <button type="button" class="btn btn-default dropdown-toggle"
+            data-toggle="dropdown">
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton">
+        <!-- первый элемент в списке - Все группы -->
+        <li>
+            <a href="@Url.Action("List", "Car")">
+                Все группы
+            </a>
+        </li>
+        <!-- Формирование остального списка -->
+        @{ 
+            foreach (var item in Model)
+            {
+                <li>
+                    <a href="@Url.Action("List", "Car", 
+                            new { group = item })">
+                        @item
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+</div>

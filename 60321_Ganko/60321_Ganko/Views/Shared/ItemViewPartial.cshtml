@@ -1,0 +1,37 @@
+﻿@model _60321_Ganko.DAL.Entities.Car
+
+<div class="col-md-4">
+    <div class="thumbnail">
+        @{
+        string imgSrc = "#";
+        if (Model.Image != null)
+        {
+            imgSrc = Url.Action("GetImageAsync", "Car", new { carId = Model.CarId });
+        }
+        }
+        <img src=@imgSrc height="200" alt='NoImage' class="img-thumbnail" />
+
+        <div class="caption">
+            <div class="item-name">
+                <h3>@Model.Manufacturer @Model.Model</h3>
+            </div>
+            <div class="item-description">
+                @Model.ClassType
+            </div>
+            <div class="centered">
+                <h3 class="badge">@Model.Price</h3>
+            </div>
+            <div class="centered">
+                <a href="@Url.Action("AddToCart",
+                              "Cart",
+                              new { id=Model.CarId, returnUrl = Request.Path})"
+                   class="btn btn-primary">
+                    <span class="glyphicon glyphicon-shopping-cart">
+
+                    </span>
+                    В корзину
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

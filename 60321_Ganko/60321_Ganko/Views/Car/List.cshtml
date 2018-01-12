@@ -1,0 +1,17 @@
+﻿@model _60321_Ganko.Models.PageListViewModel<_60321_Ganko.DAL.Entities.Car>
+
+@using System.Text;
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<div id="List">
+    @Html.Partial("ListPartial", Model);
+</div>
+
+@section SidePanel
+{
+    @Html.Action("Side", "Catalog")
+}

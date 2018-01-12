@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Главная страница";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Список</h2>
+<ul type="A">
+    @for (int i = 0; i < 5; ++i)
+    {
+        <li>элемент @i списка</li>
+    }
+</ul>
+<hr />
+<h2>Форма</h2>
+@using (Html.BeginForm("Index", "Home",
+                FormMethod.Get, new { @class = "form-horizontal" }))
+{
+    <div class="col-md-offset-2">
+        <div class="checkbox">
+            <label>@Html.CheckBox("cBox1")Чек-бокс 1</label>
+        </div>
+        <div class="checkbox">
+            <label>@Html.CheckBox("cBox2")Чек-бокс 2</label>
+        </div>
+        <div>
+            <label>@Html.RadioButton("rButton", 1, true) Радио-1</label>
+            <label>@Html.RadioButton("rButton", 2, false) Радио-2</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputLogin3" class="col-md-2 control-label">Логин:</label>
+        <div class="col-md-8">
+            @Html.TextBox("login", null, new { @class="form-control", placeholder="Введите логин"})
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword3" class="col-md-2 control-label">Пароль:</label>
+        <div class="col-md-8">
+            @Html.Password("password", null, new { @class="form-control", placeholder="Введите логин"})
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-8 col-md-offset-2">
+            @Html.DropDownList("Colors")
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <button type="submit" class="btn btn-default">Отправить</button>
+    </div>
+}
+
+@section SidePanel
+{
+    <div class="alert-success">
+        <h4><i>Пример работы с секциями на странице</i></h4>
+        @*@Html.Action("Side", "Menu")*@
+        <div class="navbar navbar-default">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#">All categories</a></li>
+                <li class="active"><a href="#">Films</a></li>
+                <li><a href="#">Books</a></li>
+                <li><a href="#">Tools</a></li>
+            </ul>
+        </div>
+    </div>
+}

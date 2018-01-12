@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+    @*<link href="~/Content/MySite.css" rel="stylesheet" />*@
+
+    @Styles.Render("~/bundles/styles")
+    @RenderSection("Styles", false)
+</head>
+<body>
+    <!-- Header of page-->
+    <div class="header-strip">
+        <!--Панель аутентификации-->
+        <div class="container">
+            <span>@Html.Action("UserInfo", "Catalog")</span>
+        </div><!--Панель аутентификации (конец)-->
+        <!--Панель навигации-->
+        <div class="container">
+            <div class="navbar navbar-inverse" role="navigation">
+                <div class="logo">
+                    <a class="navbar-brand" href="index.html">Ganko</a>
+                </div>
+                @Html.Action("Main", "Catalog",
+                              new
+                              {
+                                  c = Request.RequestContext.RouteData.Values["controller"]
+                              })
+            </div>
+        </div>
+    </div>
+    <!--Заголовок сайта (конец)-->
+    <!--Содержимое-->
+    <div class="main-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-3">
+                    <h2>@ViewBag.MyText</h2>
+                </div>
+            </div>
+            <div class="row>">
+                <!--Левая боковая панель-->
+                <div class="col-md-3">
+                    @*<div class="col-md-3">
+                            @Html.Action("Side", "Menu")
+                        </div>*@
+                    @RenderSection("SidePanel", required: false)
+
+                </div>
+                <!--Основная панель-->
+                <div class="col-md-9">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Подвал сайта -->
+    <div class="footer-strip">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.Action("Map", "Catalog")
+                </div>
+                <div class="col-md-3 col-md-offset-6">
+                    <h6>Social nets</h6>
+                    <a href="http://vk.com" target="_blank" class="social-icon vk"></a>
+                    <a href="http://twitter.com" target="_blank" class="social-icon twitter"></a>
+                    <a href="http://facebook.com" target="_blank" class="social-icon facebook"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<script src="~/Scripts/jquery-1.10.2.js"></script>
+        <script src="~/Scripts/bootstrap.js"></script>*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("Scripts", false)
+</body>
+</html>
