@@ -8,7 +8,7 @@ namespace _60321_Ganko.DAL.Entities
         [HiddenInput]
         public int CarId { get; set; }
 
-        [Required(ErrorMessage = "Введите модель")]
+        [Required(ErrorMessage = "Введите модель")]        
         [Display(Name = "Модель авто")]
         public string Model { get; set; }
 
